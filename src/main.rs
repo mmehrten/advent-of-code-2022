@@ -1,6 +1,6 @@
 mod day1;
 mod helpers;
-use helpers::{get_input, InputType};
+use crate::helpers::{get_input, InputType, Solution};
 
 /// Solution for Advent of Code day N
 /// # Arguments
@@ -19,11 +19,14 @@ fn main() {
 
     let example = get_input(day, InputType::Example);
     let challenge = get_input(day, InputType::Challenge);
-    match day {
-        1 => {
-            println!("Example: {:}", day1::solution(example));
-            println!("Challenge: {:}", day1::solution(challenge));
-        }
+
+    let cls = match day {
+        1 => Some(Box::new(day1::Day1)),
         _ => panic!("Day {} not implemented!", day),
-    }
+    };
+    let cls = cls.expect("Error processing days!");
+    println!("Part 1 Example: {:}", cls.part_one(example.clone()));
+    println!("Part 1 Challenge: {:}", cls.part_one(challenge.clone()));
+    println!("Part 2 Example: {:}", cls.part_two(example));
+    println!("Part 2 Challenge: {:}", cls.part_two(challenge));
 }

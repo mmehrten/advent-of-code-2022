@@ -63,3 +63,7 @@ mod test_input_parsing {
         assert_eq!(get_input(0, InputType::Example), ["OK"]);
     }
 }
+pub trait Solution {
+    fn part_one(&self, data: Vec<String>) -> String;
+    fn part_two(&self, data: Vec<String>) -> String;
+}
