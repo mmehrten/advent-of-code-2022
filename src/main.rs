@@ -1,5 +1,6 @@
 mod day1;
 mod day2;
+mod day3;
 mod helpers;
 use crate::helpers::{get_input, InputType, Solution};
 
@@ -24,6 +25,7 @@ fn main() {
     let cls: Option<Box<dyn Solution>> = match day {
         1 => Some(Box::new(day1::Day1)),
         2 => Some(Box::new(day2::Day2)),
+        3 => Some(Box::new(day3::Day3)),
         _ => panic!("Day {} not implemented!", day),
     };
     let cls = cls.expect("Error processing days!");
